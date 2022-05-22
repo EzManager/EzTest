@@ -26,6 +26,31 @@ Will be integrated into the EzManager package.
 
 
 ## Basic useage
+
+### Dataset Syntax
+``` bash
+// Comment line (A line should starts with "//")
+
+// You can fix I/O types
+# i int
+# o int
+1, 2 >>> 3
+// '1', '2' will cast to integer
+'1', '2', >>> 12
+100, 10, 1 >>> '111'
+
+// This will cause error
+'A', '1' >>> 1
+
+# tag You can add some tag lines in your log
+// Fix input type as string
+# i str
+'1', '2' >>> 12
+1, 2 >>> 12
+// error
+'A', 'B', 'C' >>> 'ABC'
+```
+
 ### Python
 ``` python
 ezt = EzTest('testset.txt', add).start().print_log().clear_log()
