@@ -104,6 +104,7 @@ class EzTest:
                 continue
             elif line[0] == '#':  # Command
                 command = re.sub(' +', ' ', line).split(' ')[1:]
+                command[0] = command[0].lower()
                 if command[0] == 'i':
                     self.input_type = TYPENAME_CLASS[command[1]]
                 elif command[0] == 'o':
