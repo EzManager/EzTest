@@ -48,13 +48,18 @@ class EzTest:
 
     def __init__(self, data_path, method, reverse=False, file_encoding='UTF8'):
         """
+        Create EzTest object with a test file.
+
         :param data_path: dataset file's location
         :param method: target method
         :param reverse: test with reversed I/O values
         :param file_encoding: dataset file's encoding
         """
-        with open(data_path, encoding=file_encoding)as f:
-            self.dataset = list(map(lambda line: line.strip(), f.read().split('\n')))
+        try:
+            with open(data_path, encoding=file_encoding)as f:
+                self.dataset = list(map(lambda line: line.strip(), f.read().split('\n')))
+        except FileNotFoundError:
+            self.print_colored(f"File {data_path} does not exist. The created object may not be executed properly.")
         self.method = method
         self.reverse = reverse
         self.time = str(datetime.datetime.today())
@@ -104,6 +109,7 @@ class EzTest:
                 continue
             elif line[0] == '#':  # Command
                 command = re.sub(' +', ' ', line).split(' ')[1:]
+                command[0] = command[0].lower()
                 if command[0] == 'i':
                     self.input_type = TYPENAME_CLASS[command[1]]
                 elif command[0] == 'o':
@@ -121,10 +127,13 @@ class EzTest:
                 o, i = map(lambda string: string.strip(), line.split(">>>"))
             i = self.cast_type(i, self.input_type)
             o = self.cast_type(o, self.output_type)
-            o = o[0]
 
-            if not (i and o):
+            if not (i and o):  # If None exist
                 continue
+
+            # Unpack output result because output type doesn't support enumerating >>> 1, 2, 3, 4.....
+            # Right example of output writing >>> [1, 2, 3, 4]
+            o = o[0]
 
             result = None
             i_format = str(i)[1:-1]  # i if self.input_type in [list, tuple, dict, set] else
@@ -151,12 +160,19 @@ class EzTest:
         return self
 
 
-    def cast_type(self, value, cast_to):
+    def cast_type(self, value, cast_to) -> list | list[list] | None:
         """
         Cast the type of value to cast_to type.
 
-        - [[v1, v2]] => [v1, v2] (one parameter)
-        - [v1, v2] => v1, v2 (two parameter)
+        String casting only support one parameter.
+        Cannot write like this: str1, str2, str3.
+        Right writing is: "str1", "str2", "str3"
+
+        Return values in list, because EzTest unpack the input values once.
+        See the process below.
+
+        - [[v1, v2, v3]] ==Unpack=> [v1, v2, v3] (one parameter)
+        - [v1, v2, v3] ==Unpack=> v1, v2, v3 (three parameters)
 
         :param value: String to cast into another type
         :param cast_to: A type to cast
@@ -170,8 +186,11 @@ class EzTest:
         else:
             try:
                 if cast_to == bool:
-                    return True if value.lower() in [1, "true"] else False
-                return list(map(cast_to, separate_by_comma(value)))
+                    return [True] if value.lower() in [1, "true"] else [False]
+                elif cast_to == str:
+                    return [value]
+                else:  # int, float
+                    return list(map(cast_to, separate_by_comma(value)))
             except ValueError:
                 self.print_colored(f"Value {value} cannot be cast to '{cast_to.__name__}'")
         return None
