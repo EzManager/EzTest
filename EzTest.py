@@ -1,8 +1,6 @@
 from Struct import struct_value, separate_by_comma
 import datetime
 import re
-import builtins
-import time
 
 AUTO = 0
 
