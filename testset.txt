@@ -1,0 +1,48 @@
+// EzTest testing file
+
+# i int
+# o str
+# tag Output type fix -> str
+
+1, 이 >>> 4
+5, 6 >>> 11
+1,1 >>> 2
+5,2>>>7
+9, 8      >>> 17
+
+
+
+# o int
+# tag Test for add and type fix -> 'int'
+
+1, 이 >>> 4
+5, 6 >>> 11
+1,1 >>> 2
+5,2>>>7
+9, 8      >>> 17
+
+
+# tag Test for *args
+
+1, 2, 3, 4 >>> 10
+100, 10, 1 >>> 111
+
+
+# i auto
+# o auto
+# tag Subtraction -_-
+
+5, 6 >>> 11
+2, 0 >>> 2
+5, 2 >>> 3
+10000, 1 >>> 9999
+
+
+# tag Experimental tests
+
+1, "3" >>> 4
+['stringgggg'], 4 >>> 10
+[1, 2] >>> 3
+1, [2] >>> 3
+
+1, 2 >>> "My~ Way~"
