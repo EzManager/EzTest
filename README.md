@@ -1,7 +1,7 @@
 # EzTest
 <p align="center">
   <img src="https://github.com/EzManager/EzTest/blob/main/Document/EzTest.png?raw=true" height="200px" /> <br/>
-  <img src="https://img.shields.io/badge/Python-1.0.0alpha-brightgreen?style=flat-square&logo=python" /></a>
+  <img src="https://img.shields.io/badge/Python-1.0.0alpha.2-brightgreen?style=flat-square&logo=python" /></a>
   <img src="https://img.shields.io/badge/Java-unsupported-red?style=flat-square&logo=java" /></a>
   <img src="https://img.shields.io/badge/C++-unsupported-red?style=flat-square&logo=cplusplus" /></a>
   <img src="https://img.shields.io/badge/JavaScript-unsupported-red?style=flat-square&logo=javascript" /></a>
