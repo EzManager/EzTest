@@ -75,10 +75,10 @@ def separate_by_comma(string) -> list:
             elif c == 'b':
                 string_buffer += '\b'
                 continue
-            elif c == '\\' or c == '"' or c == "'":
+            elif c == '\\' or c == '"' or c == "'" or c == '>':
                 pass
             else:
-                raise SyntaxError("EzTest only supports \\, \", and \' escape characters.")
+                raise SyntaxError("EzTest only supports \\\\, \\\", \\\', \\>, \\n, \\t, and \\b escape characters.")
         elif (c == '"' or c == "'") and not sequence:
             if quot == '':
                 quot = c
