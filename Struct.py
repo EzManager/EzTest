@@ -8,7 +8,7 @@ def struct_value(string):
     :param string: string shape of a vlue
     """
     if has_wrong_syntax(string):
-        raise SyntaxError(f"{string}\n\nSyntaxError: Unmatched parenthesis or invalid values")
+        raise SyntaxError(f"\n\nInvalid String >>> {string}\n\nSyntaxError: Unmatched parenthesis or invalid values")
     interpreted_value = ''
     return_type = None
     c = string[0]
@@ -113,5 +113,20 @@ def has_wrong_syntax(string) -> bool:
     :param string: target
     :return: true when wrong syntax detected
     """
-    # TODO simply check pair of those two... SKIP!
+    pairs = [('[', ']'), ('{', '}'), ('(', ')')]
+    quots = ['"', "'"]
+    for pair in pairs:
+        if string[0] == pair[0]:
+            if string[-1] == pair[-1]:
+                return False  # Value(s) packed well
+            else:
+                return True  # Unmatched parenthesis
+        if string[0] == pair[-1]:
+            return True  # Close-parenthesis used in front of string
+    for quot in quots:
+        if quot == string[0]:
+            if quot == string[-1]:
+                return False  # Valid string
+            else:
+                return True  # Invalid string
     return False
