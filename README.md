@@ -14,8 +14,6 @@ There is no awesome, complex functions.\
 But "Ez" to use.
 
 ## Import
-This library is the part of EzManager package.\
-EzManager repository will be created ASAP.
 
 ### Python
 ```python
@@ -90,8 +88,7 @@ ezt.change_method(sub).start().save_log()
 
 ## Methods
 
-### Python
-| Method                | Description                                                            |
+| Python                | Description                                                            |
 |-----------------------|------------------------------------------------------------------------|
 | change_method(method) | Change target method                                                   |
 | start()               | Start testing                                                          |
