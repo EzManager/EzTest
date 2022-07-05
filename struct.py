@@ -1,3 +1,7 @@
+"""
+Version - 1.0.0rc1
+"""
+
 def struct_value(string):
     """
     Return converted value
