@@ -8,7 +8,7 @@ def struct_value(string):
     :param string: string shape of a vlue
     """
     if has_wrong_syntax(string):
-        raise SyntaxError(f"\n\nInvalid String >>> {string}\n\nSyntaxError: Unmatched parenthesis or invalid values")
+        raise SyntaxError(f"\n\nInvalid String >>> {string}\nSyntaxError: Unmatched parenthesis or invalid values")
     interpreted_value = ''
     return_type = None
     c = string[0]
@@ -17,14 +17,14 @@ def struct_value(string):
             return []
         return_type = list
         interpreted_value = []
-        for item in separate_by_comma(string[1:-1]):
+        for item in separate(string[1:-1]):
             interpreted_value.append(struct_value(item))
     elif c == "(":
         if string[1] == ")":
             return tuple()
         return_type = tuple
         interpreted_value = []
-        for item in separate_by_comma(string[1:-1]):
+        for item in separate(string[1:-1]):
             interpreted_value.append(struct_value(item))
     elif c == "{":
         if string[1] == "}":
@@ -51,11 +51,12 @@ def struct_value(string):
     return return_type(interpreted_value)
 
 
-def separate_by_comma(string) -> list:
+def separate(string, by=',') -> list:
     """
     Separate string based on comma.
 
     :param string:
+    :param by: separates string by this value
     :return: split string
     """
     quot = ''
@@ -96,7 +97,7 @@ def separate_by_comma(string) -> list:
                 sequence.pop(-1)
         elif c == ' ':  # Redundant white space
             continue
-        elif c == ',':
+        elif c == by:
             value_list.append(string_buffer)
             string_buffer = ''
             continue
