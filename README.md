@@ -19,7 +19,7 @@ EzManager repository will be created ASAP.
 
 ### Python
 ```python
-from ez import eztest
+from ez.eztest import EzTest
 ```
 
 
