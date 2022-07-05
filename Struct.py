@@ -31,8 +31,12 @@ def struct_value(string):
             return dict()
         return_type = dict
         interpreted_value = dict()
-        # TODO declare how to convert str to dict
-        pass
+        for item in separate(string[1:-1]):
+            try:
+                k, v = separate(item, by=':')
+                interpreted_value[struct_value(k)] = struct_value(v)
+            except ValueError and TypeError:  # TypeError -> Unhashable key type
+                raise SyntaxError(f"\n\nInvalid String >>> {string}\nSyntaxError: Wrong dictionary syntax detected")
     elif c.isdigit():
         if '.' in string:
             return_type = float
