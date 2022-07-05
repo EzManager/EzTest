@@ -1,4 +1,9 @@
-from Struct import struct_value, separate_by_comma
+"""
+Version - 1.0.0rc1
+"""
+
+
+from struct import struct_value, separate
 import datetime
 import re
 
@@ -182,7 +187,8 @@ class EzTest:
             try:
                 return struct_value("["+value+"]")
             except SyntaxError as e:
-                print(e)
+                self.print_colored(e)
+                self.print_colored("Test line passed", ORANGE)
         else:
             try:
                 if cast_to == bool:
@@ -190,7 +196,7 @@ class EzTest:
                 elif cast_to == str:
                     return [value]
                 else:  # int, float
-                    return list(map(cast_to, separate_by_comma(value)))
+                    return list(map(cast_to, separate(value)))
             except ValueError:
                 self.print_colored(f"Value {value} cannot be cast to '{cast_to.__name__}'")
         return None

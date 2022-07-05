@@ -1,7 +1,7 @@
 # EzTest
 <p align="center">
   <img src="https://github.com/EzManager/EzTest/blob/main/Document/EzTest.png?raw=true" height="200px" /> <br/>
-  <img src="https://img.shields.io/badge/Python-1.0.0alpha.2-brightgreen?style=flat-square&logo=python" /></a>
+  <img src="https://img.shields.io/badge/Python-1.0.0rc1-brightgreen?style=flat-square&logo=python" /></a>
   <img src="https://img.shields.io/badge/Java-unsupported-red?style=flat-square&logo=java" /></a>
   <img src="https://img.shields.io/badge/C++-unsupported-red?style=flat-square&logo=cplusplus" /></a>
   <img src="https://img.shields.io/badge/JavaScript-unsupported-red?style=flat-square&logo=javascript" /></a>
@@ -14,15 +14,11 @@ There is no awesome, complex functions.\
 But "Ez" to use.
 
 ## Import
-This library is the part of EzManager package.\
-EzManager repository will be created ASAP.
 
 ### Python
 ```python
-from EzManager.EzTest import EzTest
-from EzTest import EzTest
+from ez.eztest import EzTest
 ```
-Will be integrated into the EzManager package.
 
 
 ## Basic useage
@@ -89,3 +85,21 @@ Also, if you want to write >, you should write it like `\>`
 ezt = EzTest('testset.txt', add).start().print_log().clear_log()
 ezt.change_method(sub).start().save_log()
 ```
+
+## Methods
+
+| Python                | Description                                                            |
+|-----------------------|------------------------------------------------------------------------|
+| change_method(method) | Change target method                                                   |
+| start()               | Start testing                                                          |
+| add_tag(msg)          | Add tag line (in testset, use "# tag" command)                         |
+| clear_log()           | Clear saved log                                                        |
+| save_log(path)        | Save log as .txt in path                                               |
+| print_log(colored)    | Print saved log<br/>If colored=True, some keywords will be highlighted |
+
+
+
+## Version
+| Version    | Changes                                                                                                                                          |
+|------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1.0.0rc1   | - Most of builtin types(int, float, str, list, tuple, dict) are supported<br/>(set, complex are not supported)<br/>- Auto type structing support |
