@@ -18,6 +18,11 @@ This library is the part of EzManager package.\
 EzManager repository will be created ASAP.
 
 ### Python
+You should install integrated `Ez` package by pip.
+```
+pip install ezmanager
+```
+Now you can import `Eztest`
 ```python
 from ez.eztest import EzTest
 ```
