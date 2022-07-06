@@ -15,6 +15,11 @@ A unit tester of `Ez` package
 ## Import
 
 ### Python
+You should install integrated `Ez` package by pip.
+```
+pip install ezmanager
+```
+Now you can import `Eztest`
 ```python
 from ez.eztest import EzTest
 ```
