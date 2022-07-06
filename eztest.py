@@ -3,7 +3,7 @@ Version - 1.0.0rc1
 """
 
 
-from struct import struct_value, separate
+from ez.struct import struct_value, separate
 import datetime
 import re
 
