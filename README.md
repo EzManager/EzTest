@@ -9,9 +9,8 @@
 
 
 ## Introduction
-EzTest is just a unit tester.\
-There is no awesome, complex functions.\
-But "Ez" to use.
+A unit tester of `Ez` package
+### [Ez repository >](https://github.com/EzManager/Ez)
 
 ## Import
 
